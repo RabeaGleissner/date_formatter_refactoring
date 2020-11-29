@@ -7,8 +7,10 @@ class DateRangeFormatter
     @end_date = Date.parse(end_date)
     @start_time = start_time
     @end_time = end_time
-    @full_start_date = @start_date.strftime("#{@start_date.day.ordinalize} %B %Y")
-    @full_end_date = @end_date.strftime("#{@end_date.day.ordinalize} %B %Y")
+    @ordinalized_start_date = @start_date.day.ordinalize
+    @ordinalized_end_date = @end_date.day.ordinalize
+    @full_start_date = @start_date.strftime("#{@ordinalized_start_date} %B %Y")
+    @full_end_date = @end_date.strftime("#{@ordinalized_end_date} %B %Y")
   end
 
   def to_s
@@ -23,7 +25,7 @@ class DateRangeFormatter
         @full_start_date
       end
     elsif @start_date.month == @end_date.month && @start_date.year == @end_date.year
-      get_date_range(:same_month)
+      get_date_range(:same_month_and_year)
     elsif @start_date.year == @end_date.year
       get_date_range(:same_year)
     else
@@ -35,10 +37,9 @@ class DateRangeFormatter
 
   def get_date_range(option)
     range_for_option = {
+      same_month_and_year: @start_date.strftime("#{@ordinalized_start_date} - #{@ordinalized_end_date} %B %Y"),
+      same_year: @start_date.strftime("#{@ordinalized_start_date} %B - ") + @end_date.strftime("#{@ordinalized_end_date} %B %Y"),
       default: "#{@full_start_date} - #{@full_end_date}",
-      same_year:
-        @start_date.strftime("#{@start_date.day.ordinalize} %B - ") + @end_date.strftime("#{@end_date.day.ordinalize} %B %Y"),
-        same_month: @start_date.strftime("#{@start_date.day.ordinalize} - #{@end_date.day.ordinalize} %B %Y"),
     }
     if @start_time && @end_time
       full_dates_with_both_times
