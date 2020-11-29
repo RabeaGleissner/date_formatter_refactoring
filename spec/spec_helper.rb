@@ -38,6 +38,9 @@ RSpec.configure do |config|
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
+    if config.files_to_run.one?
+        config.default_formatter = 'doc'
+    end
   end
 
 # The settings below are suggested to provide a good initial experience
