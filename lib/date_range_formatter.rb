@@ -22,7 +22,7 @@ class DateRangeFormatter
       else
         @full_start_date
       end
-    elsif @start_date.month == @end_date.month
+    elsif @start_date.month == @end_date.month && @start_date.year == @end_date.year
       get_date_range(:same_month)
     elsif @start_date.year == @end_date.year
       get_date_range(:same_year)
