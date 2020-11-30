@@ -1,4 +1,4 @@
-# Altmetric Refactoring Exercise
+# Refactoring Exercise
 
 Inside this directory you'll find a Ruby program to format date ranges with
 optional start and end times.
@@ -18,4 +18,3 @@ date range as "1st November 2009 - 3rd November 2010" but actually returns
 
 Find and fix the bug, writing tests if need be and refactor the code as you
 see fit.
-
