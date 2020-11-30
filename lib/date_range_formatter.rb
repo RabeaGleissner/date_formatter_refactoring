@@ -38,7 +38,7 @@ class DateRangeFormatter
   def get_date_range(option)
     range_for_option = {
       same_month_and_year: @start_date.strftime("#{@ordinalized_start_date} - #{@ordinalized_end_date} %B %Y"),
-      same_year: @start_date.strftime("#{@ordinalized_start_date} %B - ") + @end_date.strftime("#{@ordinalized_end_date} %B %Y"),
+      same_year: @start_date.strftime("#{@ordinalized_start_date} %B - ") + @full_end_date,
       default: "#{@full_start_date} - #{@full_end_date}",
     }
     if @start_time && @end_time
